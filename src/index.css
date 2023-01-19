@@ -52,3 +52,20 @@ code {
   z-index: 1;
   cursor: pointer;
 }
+
+.dots-container {
+  width: 200px;
+  margin: 0 auto;
+  display: flex;
+}
+
+.dots-container > .slider-dot {
+
+  padding: 10px 10px;
+
+}
+
+.slider-dot > span {
+  cursor: pointer;
+
+}

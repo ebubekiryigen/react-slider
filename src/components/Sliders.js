@@ -1,9 +1,11 @@
+import { faArrowLeft, faArrowLeftRotate, faChevronCircleLeft, faChevronCircleRight, faCoffee, faDotCircle, faLeftLong } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react"
+
 
 export default function Sliders({slider}){
 
     const [currentSlider, setCurrentSlider] = useState(3)
-    console.log(currentSlider)
 
     const backSliderHandle = () =>{
         const protect = currentSlider === 0;
@@ -18,18 +20,21 @@ export default function Sliders({slider}){
         setCurrentSlider(isNext)
     }
 
+    const dotsSliderHandle = (index) =>{
+        setCurrentSlider(index)
+    }
 
     return(
         <section className="slider">
             <div className="slider-container" style={{backgroundImage:`url(${slider[currentSlider].image})`}}>
-                <div className="left" onClick={backSliderHandle}>sol</div>
-                <div className="right" onClick={NextSliderHandle}>sağ</div>
-                <div>{slider.map(()=>{
+                <div className="left" onClick={backSliderHandle}><FontAwesomeIcon icon={faChevronCircleLeft} /></div>
+                <div className="right" onClick={NextSliderHandle}><FontAwesomeIcon icon={faChevronCircleRight} /></div>
+            </div>
+            <div className="dots-container">{slider.map((item,index)=>{
                     return(
-                        <div className="slider-dots">.</div>
+                        <div className="slider-dot" key={item.id} ><span onClick={()=>dotsSliderHandle(index)}><FontAwesomeIcon icon={faDotCircle} /></span></div>
                     )
                 })}</div>
-            </div>
         </section>
     )
 }
